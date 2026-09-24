@@ -131,6 +131,7 @@ public class ManageStudent {
         // 6) Sort by grade desc
         // sort function
         System.out.println("\n== Sorted by grade (desc) ==");
+        ManageStudent.sortByGradeDesc(students);
         for (Student s : students) System.out.println(s);
 
         // 7) High achievers >= 15
@@ -141,14 +142,23 @@ public class ManageStudent {
         // function
         boolean updated =ManageStudent.updateGrade(students,4,12);
         System.out.println("\nUpdated id=4? " + updated);
-        System.out.println(findStudentByName(students, "Dina"));
+        System.out.println(findStudentByName(students, "Dina"));//should return null because no student named Dina is in the array
 
         // 9) Duplicate names
         System.out.println(ManageStudent.hasDuplicateNames(students));
 
         // 10) Append new student
        Student[] updatedStudents =  ManageStudent.appendStudent(students,new Student(6,"yasmine",13));
-
+        // 11) matrix of  students and top student in each class
+        Student[][] studentMatrix = {{new Student(1,"Rania",14,17),new Student(2,"Nouha",20,11),new Student(3,"Mohamed",21,14)},{new Student(4,"Manal",19,16),new Student(5,"Samira",24,12),new Student(6,"Douae",17,15)}};
+        for(int i = 0;i<studentMatrix.length;i++) {
+            for (int j = 0; j < studentMatrix[i].length; j++) {
+                System.out.println(studentMatrix[i][j].toString());
+            }
+            ManageStudent.sortByGradeDesc(studentMatrix[i]);
+            System.out.println("The top Student of this class is: ");
+            System.out.println(studentMatrix[i][0].toString());
+        }
     }
 }
 
